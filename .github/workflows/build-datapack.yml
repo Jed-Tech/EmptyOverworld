@@ -24,6 +24,8 @@ jobs:
       run: |
         cd EmptyOverworld
         zip -r ../${DATAPACK_NAME}.zip pack.mcmeta data/
+        echo "Created ${DATAPACK_NAME}.zip"
+        ls -la ../${DATAPACK_NAME}.zip
         
     - name: Upload datapack artifact
       uses: actions/upload-artifact@v4
