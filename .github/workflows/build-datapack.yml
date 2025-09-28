@@ -20,7 +20,7 @@ jobs:
       run: |
         echo "VERSION=1.0" >> $GITHUB_ENV
         echo "MC_VERSION=1.21.8" >> $GITHUB_ENV
-        echo "DATAPACK_NAME=EmptyOverworld_${VERSION}_${MC_VERSION}" >> $GITHUB_ENV
+        echo "DATAPACK_NAME=EmptyOverworld_1.0_1.21.8" >> $GITHUB_ENV
         
     - name: Create datapack zip
       run: |
