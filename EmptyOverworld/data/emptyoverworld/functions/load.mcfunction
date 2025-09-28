@@ -1,1 +1,0 @@
-tellraw @a {"text":"LOAD FUNCTION WORKS!","color":"red"}

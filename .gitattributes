@@ -1,7 +1,0 @@
-# Force LF for all text files
-* text=auto eol=lf
-
-# Explicitly enforce LF for datapack files
-*.mcfunction text eol=lf
-*.json text eol=lf
-*.mcmeta text eol=lf

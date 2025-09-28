@@ -1,7 +1,0 @@
-{
-  "values": [
-    "minecraft:test_minecraft",
-    "emptyoverworld:load",
-    "emptyoverworld:init"
-  ]
-}
