@@ -1,7 +1,7 @@
 say load function works
 
-# Initialize scoreboard for join tracking
-scoreboard objectives add joined dummy
+# Grant join advancement to all players to trigger join_failsafe
+advancement grant @a only emptyoverworld:join
 
 # Teleport any Overworld players to the Nether hub
 execute as @a if dimension minecraft:overworld run tellraw @s {"text":"[EmptyOverworld] Teleporting to Nether!","color":"yellow"}

@@ -19,7 +19,7 @@
   },
   "criteria": {
     "join": {
-      "trigger": "minecraft:tick"
+      "trigger": "minecraft:impossible"
     }
   },
   "rewards": {
