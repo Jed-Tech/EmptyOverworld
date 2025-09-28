@@ -1,0 +1,62 @@
+name: Build and Release Datapack
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up variables
+      run: |
+        echo "VERSION=1.0" >> $GITHUB_ENV
+        echo "MC_VERSION=1.21.8" >> $GITHUB_ENV
+        echo "DATAPACK_NAME=EmptyOverworld_${VERSION}_${MC_VERSION}" >> $GITHUB_ENV
+        
+    - name: Create datapack zip
+      run: |
+        cd EmptyOverworld
+        zip -r ../${DATAPACK_NAME}.zip pack.mcmeta data/
+        
+    - name: Upload datapack artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: datapack-zip
+        path: ${{ env.DATAPACK_NAME }}.zip
+        
+    - name: Create Release (on push to main)
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: v${{ env.VERSION }}
+        name: EmptyOverworld v${{ env.VERSION }}
+        body: |
+          ## EmptyOverworld Datapack v${{ env.VERSION }}
+          
+          **Minecraft Version:** ${{ env.MC_VERSION }}
+          
+          ### Changes
+          - See commit history for details
+          
+          ### Installation
+          1. Download the `${{ env.DATAPACK_NAME }}.zip` file
+          2. Place it in your world's `datapacks` folder
+          3. Run `/reload` in-game
+          
+          ### Features
+          - Void Overworld with automatic Nether teleportation
+          - Nether spawn hub at (0,65,0)
+          - End portal access through Nether stronghold rooms
+          - Self-healing system that restarts if disabled
+        files: ${{ env.DATAPACK_NAME }}.zip
+        draft: false
+        prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

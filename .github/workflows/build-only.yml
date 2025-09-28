@@ -1,0 +1,38 @@
+name: Build Datapack
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Build datapack
+      run: |
+        VERSION="1.0"
+        MC_VERSION="1.21.8"
+        DATAPACK_NAME="EmptyOverworld_${VERSION}_${MC_VERSION}"
+        
+        echo "Building ${DATAPACK_NAME}.zip..."
+        
+        # Create zip with proper structure
+        cd EmptyOverworld
+        zip -r ../${DATAPACK_NAME}.zip pack.mcmeta data/
+        
+        echo "✅ Datapack built: ${DATAPACK_NAME}.zip"
+        echo "📁 Contents:"
+        echo "   - pack.mcmeta"
+        echo "   - data/"
+        
+    - name: Upload build artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: datapack-build
+        path: EmptyOverworld_*.zip
