@@ -10,5 +10,5 @@ execute as @a if dimension minecraft:overworld run tp @s 0 65 0 minecraft:the_ne
 # Kickstart the once-per-second teleport scheduler
 schedule function emptyoverworld:tick_runner 20t
 
-# Debug: announce completion
+# Debug: announce completion ok
 tellraw @a {"text":"[EmptyOverworld] load.mcfunction completed","color":"green"}
