@@ -1,7 +1,12 @@
-# Force LF for all text files
+# Ensure all text files use LF line endings
 * text=auto eol=lf
 
-# Explicitly enforce LF for datapack files
-*.mcfunction text eol=lf
+# Explicitly set line endings for specific file types
 *.json text eol=lf
-*.mcmeta text eol=lf
+*.mcfunction text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+
+# Ensure these files are always treated as text
+*.json linguist-language=JSON
+*.mcfunction linguist-language=Shell
