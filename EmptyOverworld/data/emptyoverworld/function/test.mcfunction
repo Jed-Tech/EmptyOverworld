@@ -2,4 +2,4 @@ tellraw @a {"text":"[EmptyOverworld] Test function works! Namespace is correct."
 
 # Test teleportation
 execute as @a if dimension minecraft:overworld run tellraw @s {"text":"[EmptyOverworld] You are in overworld - teleporting to Nether!","color":"yellow"}
-execute as @a if dimension minecraft:overworld run tp @s ~ ~ ~ minecraft:the_nether
+execute as @a if dimension minecraft:overworld run execute in minecraft:the_nether run tp @s ~ ~ ~
