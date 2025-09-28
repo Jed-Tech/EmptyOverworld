@@ -1,4 +1,4 @@
-﻿# Continuous failsafe - teleport any Overworld players to Nether
+# Continuous failsafe - teleport any Overworld players to Nether
 # Debug: Show what dimension we're in
 execute as @a run tellraw @s {"text":"[DEBUG] I am in dimension: ","color":"gray"}
 execute as @a run execute in minecraft:overworld run tellraw @s {"text":"OVERWORLD","color":"red"}
