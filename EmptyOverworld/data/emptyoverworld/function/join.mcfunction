@@ -1,6 +1,6 @@
-# First-time join experience
-tellraw @s {"text":"[EmptyOverworld] Welcome to the Nether-Only world!","color":"aqua"}
-tellraw @s {"text":"[EmptyOverworld] The Overworld is gone. This is your life now...","color":"gray"}
+# First-time join experience - only run if player is in Overworld
+execute as @s if dimension minecraft:overworld run tellraw @s {"text":"[EmptyOverworld] Welcome to the Nether-Only world!","color":"aqua"}
+execute as @s if dimension minecraft:overworld run tellraw @s {"text":"[EmptyOverworld] The Overworld is gone. This is your life now...","color":"gray"}
 
 # Teleport player to Nether if they're in the overworld
 execute as @s if dimension minecraft:overworld run tellraw @s {"text":"[EmptyOverworld] Teleporting to Nether!","color":"yellow"}
