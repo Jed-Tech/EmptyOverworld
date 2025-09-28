@@ -1,8 +1,14 @@
-# Debug: Announce that load function is running
-tellraw @a {"text":"[EmptyOverworld] Load function executed!","color":"green"}
+# Debug: announce load function is running
+tellraw @a {"text":"[EmptyOverworld] load.mcfunction executed","color":"green"}
 
-# Set world spawn to Nether coordinates (this works even if Nether isn't loaded)
-setworldspawn 0 65 0
+# Build Nether spawn platform at 0,65,0
+execute in minecraft:the_nether run function emptyoverworld:spawn_platform
 
-# Debug: Announce completion
-tellraw @a {"text":"[EmptyOverworld] Load function completed!","color":"green"}
+# Teleport any existing Overworld players to Nether hub
+execute as @a if dimension minecraft:overworld run tp @s 0 65 0 minecraft:the_nether
+
+# Kickstart the once-per-second teleport scheduler
+schedule function emptyoverworld:tick_runner 20t
+
+# Debug: announce completion
+tellraw @a {"text":"[EmptyOverworld] load.mcfunction completed","color":"green"}
