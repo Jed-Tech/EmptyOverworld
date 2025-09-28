@@ -22,14 +22,8 @@ jobs:
       run: |
         echo "VERSION=1.0" >> $GITHUB_ENV
         echo "MC_VERSION=1.21.8" >> $GITHUB_ENV
-        # Get the number of commits since the last release tag
-        if git describe --tags --abbrev=0 >/dev/null 2>&1; then
-          LAST_TAG=$(git describe --tags --abbrev=0)
-          COMMITS_SINCE=$(git rev-list --count ${LAST_TAG}..HEAD)
-          PATCH_VERSION=$((COMMITS_SINCE + 1))
-        else
-          PATCH_VERSION=1
-        fi
+        # Use GitHub's run number for consistent versioning
+        PATCH_VERSION=${{ github.run_number }}
         echo "PATCH_VERSION=${PATCH_VERSION}" >> $GITHUB_ENV
         echo "FULL_VERSION=1.0.${PATCH_VERSION}" >> $GITHUB_ENV
         echo "DATAPACK_NAME=EmptyOverworld_1.0.${PATCH_VERSION}_1.21.8" >> $GITHUB_ENV
