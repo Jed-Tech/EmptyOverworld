@@ -19,10 +19,10 @@
   },
   "criteria": {
     "join": {
-      "trigger": "minecraft:impossible"
+      "trigger": "minecraft:tick"
     }
   },
   "rewards": {
-    "function": "emptyoverworld:join_failsafe"
+    "function": "emptyoverworld:join"
   }
 }
