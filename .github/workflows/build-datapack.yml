@@ -42,30 +42,48 @@ jobs:
         name: datapack-zip
         path: ${{ env.DATAPACK_NAME }}.zip
         
+    - name: Generate release notes
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      id: release_notes
+      run: |
+        # Get the previous tag to find commits since last release
+        PREVIOUS_TAG=$(git describe --tags --abbrev=0 HEAD~1 2>/dev/null || echo "")
+        
+        if [ -z "$PREVIOUS_TAG" ]; then
+          # If no previous tag, get all commits
+          COMMITS=$(git log --oneline --pretty=format:"- %s" HEAD)
+        else
+          # Get commits since the previous tag
+          COMMITS=$(git log --oneline --pretty=format:"- %s" ${PREVIOUS_TAG}..HEAD)
+        fi
+        
+        # Create the release body
+        cat << EOF > release_body.md
+        ## EmptyOverworld Datapack v${{ env.FULL_VERSION }}
+        
+        **Minecraft Version:** ${{ env.MC_VERSION }}
+        
+        ### Changes
+        $COMMITS
+        
+        ### Installation
+        1. Download the \`${{ env.DATAPACK_NAME }}.zip\` file
+        2. Place it in your world's \`datapacks\` folder
+        3. Run \`/reload\` in-game
+        EOF
+        
+        # Output the body for the release action
+        echo "body<<EOF" >> $GITHUB_OUTPUT
+        cat release_body.md >> $GITHUB_OUTPUT
+        echo "EOF" >> $GITHUB_OUTPUT
+
     - name: Create Release (on push to main)
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       uses: softprops/action-gh-release@v1
       with:
         tag_name: v${{ env.FULL_VERSION }}
         name: EmptyOverworld v${{ env.FULL_VERSION }}
-        body: |
-          ## EmptyOverworld Datapack v${{ env.FULL_VERSION }}
-          
-          **Minecraft Version:** ${{ env.MC_VERSION }}
-          
-          ### Changes
-          - See commit history for details
-          
-          ### Installation
-          1. Download the `${{ env.DATAPACK_NAME }}.zip` file
-          2. Place it in your world's `datapacks` folder
-          3. Run `/reload` in-game
-          
-          ### Features
-          - Void Overworld with automatic Nether teleportation
-          - Nether spawn hub at (0,65,0)
-          - End portal access through Nether stronghold rooms
-          - Self-healing system that restarts if disabled
+        body: ${{ steps.release_notes.outputs.body }}
         files: ${{ env.DATAPACK_NAME }}.zip
         draft: false
         prerelease: false
