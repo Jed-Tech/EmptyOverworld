@@ -20,7 +20,11 @@ jobs:
       run: |
         echo "VERSION=1.0" >> $GITHUB_ENV
         echo "MC_VERSION=1.21.8" >> $GITHUB_ENV
-        echo "DATAPACK_NAME=EmptyOverworld_1.0_1.21.8" >> $GITHUB_ENV
+        # Get the number of releases to create incremental version
+        RELEASE_COUNT=$(git rev-list --count HEAD)
+        echo "PATCH_VERSION=${RELEASE_COUNT}" >> $GITHUB_ENV
+        echo "FULL_VERSION=1.0.${RELEASE_COUNT}" >> $GITHUB_ENV
+        echo "DATAPACK_NAME=EmptyOverworld_1.0.${RELEASE_COUNT}_1.21.8" >> $GITHUB_ENV
         
     - name: Create datapack zip
       run: |
@@ -39,10 +43,10 @@ jobs:
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       uses: softprops/action-gh-release@v1
       with:
-        tag_name: v${{ env.VERSION }}
-        name: EmptyOverworld v${{ env.VERSION }}
+        tag_name: v${{ env.FULL_VERSION }}
+        name: EmptyOverworld v${{ env.FULL_VERSION }}
         body: |
-          ## EmptyOverworld Datapack v${{ env.VERSION }}
+          ## EmptyOverworld Datapack v${{ env.FULL_VERSION }}
           
           **Minecraft Version:** ${{ env.MC_VERSION }}
           
