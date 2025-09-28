@@ -1,4 +1,4 @@
-# EmptyOverworld Datapack Loaded
+﻿# EmptyOverworld Datapack Loaded
 tellraw @a {"text":"[EmptyOverworld] Datapack loaded! The Overworld is now inaccessible.","color":"green"}
 
 # Immediate teleport any existing Overworld players

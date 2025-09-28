@@ -1,1 +1,1 @@
-tellraw @a {"text":"MINECRAFT NAMESPACE WORKS!","color":"blue"}
+﻿tellraw @a {"text":"MINECRAFT NAMESPACE WORKS!","color":"blue"}
