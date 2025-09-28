@@ -1,1 +1,1 @@
-tellraw @a {"text":"TEST FUNCTION WORKS!","color":"yellow"}
+say test function works

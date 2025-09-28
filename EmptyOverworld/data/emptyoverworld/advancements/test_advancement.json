@@ -1,0 +1,10 @@
+{
+  "criteria": {
+    "test": {
+      "trigger": "minecraft:tick"
+    }
+  },
+  "rewards": {
+    "function": "emptyoverworld:test"
+  }
+}
