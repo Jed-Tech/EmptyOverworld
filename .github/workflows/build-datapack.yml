@@ -30,7 +30,7 @@ jobs:
     - name: Create datapack zip
       run: |
         cd EmptyOverworld
-        zip -r ../${{ env.DATAPACK_NAME }}.zip pack.mcmeta data/
+        zip -r ../${{ env.DATAPACK_NAME }}.zip .
         echo "Created ${{ env.DATAPACK_NAME }}.zip"
         ls -la ../${{ env.DATAPACK_NAME }}.zip
         echo "Zip contents:"
