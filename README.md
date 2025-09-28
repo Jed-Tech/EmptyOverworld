@@ -9,17 +9,18 @@ Designed for Minecraft **1.21.x** (Fabric/Vanilla-compatible).
 
 ### 🌍 Overworld
 - Generates as a **complete void** (no blocks, no terrain).
-- Players cannot spawn naturally here.
+- Players are **automatically teleported** to the Nether if they enter.
+- **Continuous monitoring** ensures no player can stay in the void.
 - Can still be entered via Nether portals for building sky-islands if desired.
 
 ### 🌋 Nether
 - Acts as the **main survival dimension**.
 - A **safe spawn hub** is generated at **(0,65,0)**:
   - 6×6 reinforced deepslate platform
-  - Optional glass walls and ceiling for ghast protection
-- World spawn is set here by default.
+- **Welcome advancement** explains the Nether-Only concept to new players.
+- **Self-healing system** ensures players always end up in the Nether.
 - Respawn rules:
-  - Players **without a respawn anchor** are teleported here.
+  - Players **without a respawn anchor** are teleported here automatically.
   - Players **with a respawn anchor** respawn at their own anchor as normal.
 
 ### 🔮 End Access
@@ -39,12 +40,13 @@ Designed for Minecraft **1.21.x** (Fabric/Vanilla-compatible).
 ---
 
 ## 📜 Notes
-- Respawn Anchors work as expected — the Nether hub only applies if no personal spawn is set.
-- Players can still travel to the void Overworld via portals, but no terrain exists there.
-- End progression is preserved:
-- Blaze rods (Nether Fortresses)
-- Ender pearls (Piglins, Endermen)
-- Eyes of Ender for End Portals
+- **Respawn Anchors work as expected** — the Nether hub only applies if no personal spawn is set.
+- **Players can still travel to the void Overworld** via portals, but will be automatically teleported back.
+- **End progression is preserved**:
+  - Blaze rods (Nether Fortresses)
+  - Ender pearls (Piglins, Endermen)
+  - Eyes of Ender for End Portals
+- **Self-healing system** automatically restarts if `/schedule clear` is run.
 
 ---
 
@@ -57,4 +59,3 @@ You are free to use, modify, and share it, with attribution.
 ## 🙏 Credits
 Created by **[Jed Airtech]**  
 Part of the *Nether-Only World Project*
-
