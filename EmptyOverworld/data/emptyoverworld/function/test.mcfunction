@@ -1,2 +1,2 @@
-tellraw @a {"text":"[TEST] Function ran","color":"green"}
-teleport @a 0 65 0 minecraft:the_nether
+tellraw @a {"text":"[TEST] Function ran successfully","color":"green"}
+execute in minecraft:the_nether run teleport @a 0 65 0
