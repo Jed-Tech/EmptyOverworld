@@ -1,3 +1,6 @@
+# Test if tick function is running
+tellraw @a {"text":"[EmptyOverworld] Tick function is running!","color":"aqua"}
+
 # Teleport any Overworld players to the Nether hub
 execute as @a if dimension minecraft:overworld run tellraw @s {"text":"[EmptyOverworld] Teleporting to Nether!","color":"yellow"}
 execute as @a if dimension minecraft:overworld run execute in minecraft:the_nether run tp @s ~ 65 ~
