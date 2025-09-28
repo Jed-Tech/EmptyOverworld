@@ -31,11 +31,11 @@ jobs:
     - name: Create datapack zip
       run: |
         cd EmptyOverworld
-        zip -r ../${DATAPACK_NAME}.zip pack.mcmeta data/
-        echo "Created ${DATAPACK_NAME}.zip"
-        ls -la ../${DATAPACK_NAME}.zip
+        zip -r ../${{ env.DATAPACK_NAME }}.zip pack.mcmeta data/
+        echo "Created ${{ env.DATAPACK_NAME }}.zip"
+        ls -la ../${{ env.DATAPACK_NAME }}.zip
         echo "Zip contents:"
-        unzip -l ../${DATAPACK_NAME}.zip
+        unzip -l ../${{ env.DATAPACK_NAME }}.zip
         
     - name: Upload datapack artifact
       uses: actions/upload-artifact@v4
