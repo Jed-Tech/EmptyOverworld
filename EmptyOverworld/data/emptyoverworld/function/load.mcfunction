@@ -1,5 +1,8 @@
 say load function works
 
+# Initialize scoreboard for join tracking
+scoreboard objectives add joined dummy
+
 # Teleport any Overworld players to the Nether hub
 execute as @a if dimension minecraft:overworld run tellraw @s {"text":"[EmptyOverworld] Teleporting to Nether!","color":"yellow"}
 execute as @a if dimension minecraft:overworld run execute in minecraft:the_nether run tp @s 0 65 0
