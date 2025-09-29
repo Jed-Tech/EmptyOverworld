@@ -1,2 +1,3 @@
-# Continuous failsafe - teleport any Overworld players to Nether
-execute as @a unless entity @s[tag=eo_in_nether] if entity @s in minecraft:overworld run function emptyoverworld:teleport_to_nether
+# tick.mcfunction
+# Only run the teleport function for players actually in the Overworld
+execute as @a if dimension = minecraft:overworld run function emptyoverworld:teleport_to_nether
