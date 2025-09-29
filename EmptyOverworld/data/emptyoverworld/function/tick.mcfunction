@@ -1,9 +1,8 @@
-# data/emptyoverworld/function/tick.mcfunction
+# Only teleport players who are actually in the Overworld
+# Cooldown tag prevents immediate re-trigger after a teleport
+execute as @a unless entity @s[tag=eo_recent_tp] if entity @s in minecraft:overworld run function emptyoverworld:teleport_to_nether
 
-# Debug messages to show which dimension each player is in
-execute as @a in minecraft:overworld run tellraw @s {"text":"[DEBUG] You are in the OVERWORLD","color":"red"}
-execute as @a in minecraft:the_nether run tellraw @s {"text":"[DEBUG] You are in the NETHER","color":"gold"}
-execute as @a in minecraft:the_end run tellraw @s {"text":"[DEBUG] You are in the END","color":"dark_purple"}
-
-# Only teleport players who are currently in the Overworld
-execute as @a if entity @s in minecraft:overworld run function emptyoverworld:teleport_to_nether
+# (Optional debug — safe because it FILTERS instead of CONTEXT-SWITCHING)
+execute as @a if entity @s in minecraft:overworld run tellraw @s {"text":"[DEBUG] In OVERWORLD (will TP)","color":"red"}
+execute as @a if entity @s in minecraft:the_nether run tellraw @s {"text":"[DEBUG] In NETHER (no TP)","color":"gold"}
+execute as @a if entity @s in minecraft:the_end run tellraw @s {"text":"[DEBUG] In END (no TP)","color":"dark_purple"}

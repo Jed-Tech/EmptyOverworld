@@ -1,2 +1,1 @@
-# data/emptyoverworld/function/load.mcfunction
 tellraw @a {"text":"[EmptyOverworld] Datapack loaded! The Overworld is now inaccessible.","color":"green"}
