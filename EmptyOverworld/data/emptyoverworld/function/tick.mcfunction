@@ -1,2 +1,4 @@
-# Teleport any player in the Overworld → Nether
-execute as @a in minecraft:overworld run execute in minecraft:the_nether run teleport @s 0 65 0
+# data/emptyoverworld/function/tick.mcfunction
+
+# Only teleport players if they are currently in the Overworld
+execute as @a if entity @s[dimension=minecraft:overworld] run function emptyoverworld:teleport_to_nether
