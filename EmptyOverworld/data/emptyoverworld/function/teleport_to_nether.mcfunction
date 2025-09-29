@@ -1,6 +1,3 @@
-# Add cooldown before teleport
-tag @s add eo_tp_cd
-
 # Debug message (comment or delete to disable)
 tellraw @s {"text":"[EmptyOverworld DEBUG] Teleporting you to the Nether at 0 65 0...","color":"yellow"}
 
