@@ -1,1 +1,0 @@
-tellraw @a {"text":"TEST NAMESPACE WORKS!","color":"green"}
