@@ -1,5 +1,6 @@
 ﻿{
   "values": [
-    "emptyoverworld:tick"
+    "emptyoverworld:tick",
+    "emptyoverworld:clear_tp_tag"
   ]
 }

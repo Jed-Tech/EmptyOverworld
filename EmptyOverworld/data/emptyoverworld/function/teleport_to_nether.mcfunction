@@ -1,8 +1,8 @@
-# Add cooldown so we don’t loop teleport
+# Mark player with cooldown tag before teleporting
 tag @s add eo_tp_cd
 
-# Debug message before teleport
+# Debug message
 tellraw @s {"text":"[DEBUG] Teleporting you to the Nether at 0 65 0...","color":"yellow"}
 
-# Teleport into the Nether safely
+# Perform the teleport
 execute in minecraft:the_nether run teleport @s 0 65 0
