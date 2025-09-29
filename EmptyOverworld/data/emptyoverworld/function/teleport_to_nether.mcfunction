@@ -1,5 +1,8 @@
+# Add cooldown tag (critical: ensure it sticks after teleport)
+tag @s add eo_tp_cd
+
 # Debug message (comment or delete to disable)
-tellraw @s {"text":"[EmptyOverworld DEBUG] Teleporting you to the Nether at 0 65 0...","color":"yellow"}
+tellraw @s {"text":"[EmptyOverworld DEBUG] Teleporting you to the Nether at 0 65 0..."}
 
 # Teleport to Nether fixed coordinates
 execute in minecraft:the_nether run teleport @s 0 65 0 0 0
