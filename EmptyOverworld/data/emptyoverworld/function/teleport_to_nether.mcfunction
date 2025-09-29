@@ -1,10 +1,14 @@
 # Add cooldown before teleport
 tag @s add eo_tp_cd
 
-tellraw @s {"text":"[DEBUG] Teleporting you to the Nether at 0 65 0...","color":"yellow"}
+# Debug message (comment or delete to disable)
+tellraw @s {"text":"[EmptyOverworld DEBUG] Teleporting you to the Nether at 0 65 0...","color":"yellow"}
 
-# Teleport into Nether
-execute in minecraft:the_nether run teleport @s 0 65 0
+# Teleport to Nether fixed coordinates
+execute in minecraft:the_nether run teleport @s 0 65 0 0 0
 
-# Clear cooldown tag after a short delay so teleport finishes cleanly
+# Schedule cooldown clear after 10 ticks (normal case)
 schedule function emptyoverworld:clear_tp_tag 10t replace
+
+# Schedule cooldown clear after 30 ticks (failsafe case)
+schedule function emptyoverworld:clear_tp_tag 30t replace

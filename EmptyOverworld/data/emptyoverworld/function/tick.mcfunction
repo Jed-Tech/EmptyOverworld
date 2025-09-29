@@ -1,2 +1,2 @@
-# Only teleport if the player is *currently in the Overworld* and not on cooldown
+# Run every tick
 execute as @a unless entity @s[tag=eo_tp_cd] if entity @s in minecraft:overworld run function emptyoverworld:teleport_to_nether
